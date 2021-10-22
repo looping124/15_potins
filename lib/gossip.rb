@@ -28,20 +28,15 @@ class Gossip
 
   def self.delete_gossip(gossip_line_to_remove)
 
-    all_gossip=[]
-    CSV.foreach("db/gossip.csv", "r") do |row|
-       gossip_provisoire = Gossip.new(row[0],row[1])
-       all_gossip << gossip_provisoire
-     end
-     File.delete("db/gossip.csv")
-     File.open("db/gossip.csv", "w")
-     all_gossip.delete_at(gossip_line_to_remove)
-     all_gossip.each do
-    #  CSV.open("db/gossip.csv", "a") do |csv|
-    #   csv << [all_gossip.content, all_gossip.author]
-    # end
-    puts all_gossip.content
-  end
+  
+    table = CSV.table("db/gossip.csv")
+
+    puts gossip_line_to_remove
+    table.delete(gossip_line_to_remove-1)
+    binding.pry
+    File.open("db/gossip.csv", 'w') do |f|
+      f.write(table.to_csv)
+    end
   end
 
 end
