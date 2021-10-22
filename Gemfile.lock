@@ -4,6 +4,7 @@ GEM
     ast (2.4.2)
     byebug (11.1.3)
     coderay (1.1.3)
+    csv (3.2.0)
     diff-lcs (1.4.4)
     dotenv (2.7.6)
     method_source (1.0.0)
@@ -48,6 +49,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  csv
   dotenv
   pry
   rspec
